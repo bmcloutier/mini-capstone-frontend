@@ -1,4 +1,4 @@
-export function ProductsIndex({ products }) {
+export function ProductsIndex({ products, onShow }) {
   return (
     <div>
       <h1>All Products</h1>
@@ -7,6 +7,7 @@ export function ProductsIndex({ products }) {
           <h2>{product.name}</h2>
           <img src={product.image} alt="" />
           <p>Price: {product.price}</p>
+          <button onClick={() => onShow(product)}>More info</button>
         </div>
       ))}
     </div>

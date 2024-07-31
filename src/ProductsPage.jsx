@@ -1,11 +1,15 @@
 import { ProductsIndex } from "./ProductsIndex";
 import { ProductsNew } from "./ProductsNew";
+import { ProductsShow } from "./ProductsShow";
 import { SignupPage } from "./SignupPage";
 import { LoginPage } from "./LoginPage";
+import { Modal } from "./Modal";
 import { useState, useEffect } from "react";
 import axios from "axios";
 export function ProductsPage() {
   const [products, setProducts] = useState([]);
+  const [isProductsShowVisible, setIsProductsShowVisible] = useState(false);
+  const [currentProduct, setCurrentProduct] = useState({});
 
   const handleIndex = () => {
     console.log("handleIndex");
@@ -23,6 +27,17 @@ export function ProductsPage() {
     });
   };
 
+  const handleShow = (product) => {
+    console.log("handleShow", product);
+    setIsProductsShowVisible(true);
+    setCurrentProduct(product);
+  };
+
+  const handleClose = () => {
+    console.log("handleClose");
+    setIsProductsShowVisible(false);
+  };
+
   useEffect(handleIndex, []);
 
   return (
@@ -30,7 +45,10 @@ export function ProductsPage() {
       <SignupPage />
       <LoginPage />
       <ProductsNew onCreate={handleCreate} />
-      <ProductsIndex products={products} />
+      <ProductsIndex products={products} onShow={handleShow} />
+      <Modal show={isProductsShowVisible} onClose={handleClose}>
+        <ProductsShow product={currentProduct} />
+      </Modal>
     </main>
   );
 }
