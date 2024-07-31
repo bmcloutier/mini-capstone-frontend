@@ -1,4 +1,6 @@
 import { ProductsIndex } from "./ProductsIndex";
+import { SignupPage } from "./SignupPage";
+import { LoginPage } from "./LoginPage";
 import { useState, useEffect } from "react";
 import axios from "axios";
 export function ProductsPage() {
@@ -16,6 +18,8 @@ export function ProductsPage() {
 
   return (
     <main>
+      <SignupPage />
+      <LoginPage />
       <ProductsIndex products={products} />
     </main>
   );
