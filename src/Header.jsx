@@ -4,7 +4,7 @@ export function Header() {
   return (
     <header>
       <nav>
-        <Link to="/">Home</Link> | <Link to="/signup">Sign up</Link> | <Link to="/login">Login</Link> | <LogoutLink />
+        <Link to="/">Home</Link> | <Link to="/signup">Sign up</Link> | <Link to="/login">Sign in</Link> | <LogoutLink />
       </nav>
     </header>
   );
