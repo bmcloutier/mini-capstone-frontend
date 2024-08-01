@@ -1,5 +1,6 @@
 import { Header } from "./Header";
 import { ProductsPage } from "./ProductsPage";
+import { ProductsNewPage } from "./ProductsNewPage";
 import { Footer } from "./Footer";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { SignupPage } from "./SignupPage";
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "/", element: <ProductsPage /> },
       { path: "/signup", element: <SignupPage /> },
       { path: "/login", element: <LoginPage /> },
+      { path: "/products/new", element: <ProductsNewPage /> },
     ],
   },
 ]);
