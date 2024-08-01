@@ -8,7 +8,7 @@ export function ProductsNewPage() {
   const handleCreate = (params) => {
     axios.post("http://localhost:3000/products.json", params).then((response) => {
       console.log(response);
-      navigate("/");
+      navigate(`/products/${response.data.id}`);
     });
   };
   return (
