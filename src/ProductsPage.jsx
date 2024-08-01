@@ -1,8 +1,6 @@
 import { ProductsIndex } from "./ProductsIndex";
 import { ProductsNew } from "./ProductsNew";
 import { ProductsShow } from "./ProductsShow";
-import { SignupPage } from "./SignupPage";
-import { LoginPage } from "./LoginPage";
 import { Modal } from "./Modal";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -42,8 +40,6 @@ export function ProductsPage() {
 
   return (
     <main>
-      <SignupPage />
-      <LoginPage />
       <ProductsNew onCreate={handleCreate} />
       <ProductsIndex products={products} onShow={handleShow} />
       <Modal show={isProductsShowVisible} onClose={handleClose}>
