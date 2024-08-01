@@ -1,10 +1,13 @@
 import { Header } from "./Header";
-import { ProductsPage } from "./ProductsPage";
+import { Home } from "./Home";
+import { SignupPage } from "./SignupPage";
+import { LoginPage } from "./LoginPage";
+import { ProductsIndexPage } from "./ProductsIndexPage";
+import { ProductsShowPage } from "./ProductsShowPage";
 import { ProductsNewPage } from "./ProductsNewPage";
 import { Footer } from "./Footer";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import { SignupPage } from "./SignupPage";
-import { LoginPage } from "./LoginPage";
+import axios from "axios";
 
 const router = createBrowserRouter([
   {
@@ -16,9 +19,20 @@ const router = createBrowserRouter([
       </div>
     ),
     children: [
-      { path: "/", element: <ProductsPage /> },
+      { path: "/", element: <Home /> },
       { path: "/signup", element: <SignupPage /> },
       { path: "/login", element: <LoginPage /> },
+      {
+        path: "/products",
+        element: <ProductsIndexPage />,
+        loader: () => axios.get("http://localhost:3000/products.json").then((response) => response.data),
+      },
+      {
+        path: "/products/:id",
+        element: <ProductsShowPage />,
+        loader: ({ params }) =>
+          axios.get(`http://localhost:3000/products/${params.id}.json`).then((response) => response.data),
+      },
       { path: "/products/new", element: <ProductsNewPage /> },
     ],
   },
