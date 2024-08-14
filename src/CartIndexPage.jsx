@@ -10,5 +10,10 @@ export function CartIndexPage() {
       navigate("/carted_products");
     });
   };
-  return <CartIndex onDestroy={handleDestroy} />;
+  const handleOrder = () => {
+    axios.post("http://localhost:3000/orders.json").then(() => {
+      navigate("/orders");
+    });
+  };
+  return <CartIndex onDestroy={handleDestroy} onOrder={handleOrder} />;
 }

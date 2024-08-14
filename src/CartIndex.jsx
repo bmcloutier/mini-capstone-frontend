@@ -1,6 +1,6 @@
 import { useLoaderData, Link } from "react-router-dom";
 
-export function CartIndex({ onDestroy }) {
+export function CartIndex({ onDestroy, onOrder }) {
   const carted_products = useLoaderData();
   return (
     <div>
@@ -15,7 +15,7 @@ export function CartIndex({ onDestroy }) {
         </div>
       ))}
       <Link to="/products">Continue Shopping</Link>
-      <button>Check Out</button>
+      <button onClick={onOrder}>Check Out</button>
     </div>
   );
 }
