@@ -9,6 +9,7 @@ import { OrdersIndexPage } from "./OrdersIndexPage";
 import { Footer } from "./Footer";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import axios from "axios";
+import { CartIndexPage } from "./CartIndexPage";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
         path: "/orders",
         element: <OrdersIndexPage />,
         loader: () => axios.get("http://localhost:3000/orders.json").then((response) => response.data),
+      },
+      {
+        path: "/carted_products",
+        element: <CartIndexPage />,
+        loader: () => axios.get("http://localhost:3000/carted_products.json").then((response) => response.data),
       },
     ],
   },
