@@ -11,6 +11,9 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import axios from "axios";
 import { CartIndexPage } from "./CartIndexPage";
 
+axios.defaults.baseURL =
+  process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://mini-capstone-api-dmmg.onrender.com";
+
 const router = createBrowserRouter([
   {
     element: (
@@ -27,24 +30,23 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <ProductsIndexPage />,
-        loader: () => axios.get("http://localhost:3000/products.json").then((response) => response.data),
+        loader: () => axios.get("/products.json").then((response) => response.data),
       },
       {
         path: "/products/:id",
         element: <ProductsShowPage />,
-        loader: ({ params }) =>
-          axios.get(`http://localhost:3000/products/${params.id}.json`).then((response) => response.data),
+        loader: ({ params }) => axios.get(`/products/${params.id}.json`).then((response) => response.data),
       },
       { path: "/products/new", element: <ProductsNewPage /> },
       {
         path: "/orders",
         element: <OrdersIndexPage />,
-        loader: () => axios.get("http://localhost:3000/orders.json").then((response) => response.data),
+        loader: () => axios.get("/orders.json").then((response) => response.data),
       },
       {
         path: "/carted_products",
         element: <CartIndexPage />,
-        loader: () => axios.get("http://localhost:3000/carted_products.json").then((response) => response.data),
+        loader: () => axios.get("/carted_products.json").then((response) => response.data),
       },
     ],
   },

@@ -6,12 +6,12 @@ export function CartIndexPage() {
   const navigate = useNavigate();
 
   const handleDestroy = (id) => {
-    axios.delete(`http://localhost:3000/carted_products/${id}.json`).then(() => {
+    axios.delete(`/carted_products/${id}.json`).then(() => {
       navigate("/carted_products");
     });
   };
   const handleOrder = () => {
-    axios.post("http://localhost:3000/orders.json").then(() => {
+    axios.post("/orders.json").then(() => {
       navigate("/orders");
     });
   };
