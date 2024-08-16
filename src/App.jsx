@@ -1,3 +1,4 @@
+/* global process */
 import { Header } from "./Header";
 import { Home } from "./Home";
 import { SignupPage } from "./SignupPage";
