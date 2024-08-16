@@ -4,7 +4,13 @@ export function ProductsIndex({ products, onShow }) {
   return (
     <div>
       <h1>All Products</h1>
-      Search: <input type="text" value={searchFilter} onChange={(event) => setSearchFilter(event.target.value)} />
+      Search:{" "}
+      <input list="titles" type="text" value={searchFilter} onChange={(event) => setSearchFilter(event.target.value)} />
+      <datalist id="titles">
+        {products.map((product) => (
+          <option key={product.id}>{product.name}</option>
+        ))}
+      </datalist>
       {products
         .filter((product) => product.name.toLowerCase().includes(searchFilter.toLowerCase()))
         .map((product) => (
